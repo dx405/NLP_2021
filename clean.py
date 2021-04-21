@@ -1,5 +1,6 @@
 import json
 
+
 in_file = open("booksummaries.txt",'r',encoding='utf-8')
 corpus = in_file.read()
 summaries = corpus.split("\n")

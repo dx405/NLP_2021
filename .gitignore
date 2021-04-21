@@ -127,3 +127,7 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+data.json
+word_frequencies.json
+booksummaries.txt

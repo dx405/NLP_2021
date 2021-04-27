@@ -3,8 +3,12 @@ import numpy as np
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report
+from sklearn.preprocessing import LabelEncoder
 
 def setup_data():
+
+	# Label Encoder
+	le = LabelEncoder()
 
 	data = json.load(open('word_frequencies.json'))
 	# set up data
@@ -19,11 +23,12 @@ def setup_data():
 	# convert to numpy arrays
 	words = np.zeros([len(words), len(max(words, key= lambda x: len(x)))])
 	# array of sequence error with words
-	genre = np.array(genre, dtype=object)
+	genre = le.fit_transform(np.array(genre))
 
 	return words, genre
 
-
+# Label Encoder
+le = LabelEncoder()
 # get data
 X, Y = setup_data()
 
@@ -36,5 +41,7 @@ reg = LinearRegression().fit(x_train, y_train)
 # performing prediction on dataset
 y_pred = reg.predict(x_test)
 
+print(y_pred)
+
 # return classification report
-print(classification_report(y_test, y_pred))
+#print(classification_report(y_test, y_pred))

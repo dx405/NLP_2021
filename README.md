@@ -8,3 +8,6 @@ Text classification: Book Genres
 
 ## Linear Regression Model:
 * run **python linear_regression_model.py**
+
+## Tf-idf Preprocessing:
+* utilizes 

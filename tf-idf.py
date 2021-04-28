@@ -7,6 +7,18 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
 
 def td_idf():
+
+	stopwords = ["one", "two", "also", "novel", "story", "life","find", "new", "home","book",
+                     "first", "man","woman", "back", "day", "time", "father","take","away","old", 
+                     "return", "see", "tell", "begin", "god", "go", "death", "ship","young",
+                     "make", "family", "end", "come", "human", "world", "escape", "try", "becomes",
+                     "later", "friend", "would", "love", "people", "work",
+                     "attempt", "meet", "however", "help", "way", "year", "men",
+                     "another", "become", "next", "son", "three", "give", "house",
+                     "set", "attack", "town", "name", "kill", "order", "call", "turn",
+                     "must", "even", "child", "plan", "get", "use",
+                     "leave", "n't", "place"]
+
 	# label encoder
 	le = LabelEncoder()
 
@@ -23,6 +35,8 @@ def td_idf():
 			for j in i['genres']:
 				
 				types.append(j)
+				summ = [x for x in i['summary'].split() if x not in stopwords]
+				summ = ' '.join(summ)
 				summaries.append(i['summary'])
 
 

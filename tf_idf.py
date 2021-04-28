@@ -1,12 +1,9 @@
 import json
 import numpy as np
-from sklearn.linear_model import LinearRegression
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import classification_report
 from sklearn.preprocessing import LabelEncoder
 from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
 
-def td_idf():
+def main():
 
 	stopwords = ["one", "two", "also", "novel", "story", "life","find", "new", "home","book",
                      "first", "man","woman", "back", "day", "time", "father","take","away","old", 

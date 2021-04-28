@@ -7,7 +7,6 @@ Text classification: Book Genres
 * run **python bag_of_words.py**
 
 ## Linear Regression Model:
-* run **python linear_regression_model.py**
+* run with word_frequency preprocessing **python linear_regression_model.py frequency**
+* run with tf-idf preprocesing **python linear_regression_model.py tf-idf**
 
-## Tf-idf Preprocessing:
-* utilizes 

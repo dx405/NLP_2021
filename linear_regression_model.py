@@ -41,7 +41,6 @@ reg = LinearRegression().fit(x_train, y_train)
 # performing prediction on dataset
 y_pred = reg.predict(x_test)
 
-print(y_pred)
 
 # return classification report
 #print(classification_report(y_test, y_pred))

@@ -7,6 +7,7 @@ from sklearn.naive_bayes import MultinomialNB
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report
 from sklearn.preprocessing import LabelEncoder
+from sklearn.multiclass import OneVsRestClassifier
 
 def setup_data():
 
@@ -45,7 +46,7 @@ def run_model(data):
 	x_train, x_test, y_train, y_test = train_test_split(X, Y, test_size=.20)
 
 	# train linear regression model
-	reg = LogisticRegression().fit(x_train, y_train)
+	reg = OneVsRestClassifier(LogisticRegression()).fit(x_train, y_train)
 
 	# performing prediction on dataset
 	y_pred = reg.predict(x_test)

@@ -1,7 +1,8 @@
 import json
 import re
+from nltk.corpus import stopwords
 
-stopwords = ["one", "two", "also", "novel", "story", "life","find", "new", "home","book",
+other_stopwords = ["one", "two", "also", "novel", "story", "life","find", "new", "home","book",
                      "first", "man","woman", "back", "day", "time", "father","take","away","old", 
                      "return", "see", "tell", "begin", "god", "go", "death", "ship","young",
                      "make", "family", "end", "come", "human", "world", "escape", "try", "becomes",
@@ -14,10 +15,11 @@ stopwords = ["one", "two", "also", "novel", "story", "life","find", "new", "home
 
 def clean(text):
     text = re.sub("\'", "", text)
-    text = text.split()
-    text = [x for x in text if x not in stopwords]
+    text = text.lower().split()
+    text = [x for x in text if x not in other_stopwords]
+    text = [x for x in text if x not in stopwords.words('english')]
     text = ' '.join(text)
-    return text.lower()
+    return text
 
 in_file = open("booksummaries.txt",'r',encoding='utf-8')
 corpus = in_file.read()

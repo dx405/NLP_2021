@@ -26,7 +26,7 @@ def main():
 			#	types.append(j)
 			#	summaries.append(i['summary'])
 			types.append(i['genres'])
-			summaries.append(summ)
+			summaries.append(i['summary'])
 
 	# map genres to label encoding
 	types_encoded = mlb.fit_transform(types)

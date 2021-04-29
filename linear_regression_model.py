@@ -2,7 +2,7 @@ import json
 import numpy as np
 import tf_idf
 import sys
-from sklearn.linear_model import LinearRegression
+from sklearn.linear_model import LinearRegression, LogisticRegression
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report
@@ -32,9 +32,6 @@ def setup_data():
 
 def run_model(data):
 
-	# Label Encoder
-	le = LabelEncoder()
-
 	# if data is frequency
 	if data[-1] == 'frequency':
 
@@ -42,13 +39,13 @@ def run_model(data):
 
 	if data[-1] == 'tf-idf':
 
-		Y, X = tf_idf.main()
+		Y, X , labels = tf_idf.main()
 
 	# split into training and testing 
 	x_train, x_test, y_train, y_test = train_test_split(X, Y, test_size=.20)
 
 	# train linear regression model
-	reg = LinearRegression().fit(x_train, y_train)
+	reg = LogisticRegression().fit(x_train, y_train)
 
 	# performing prediction on dataset
 	y_pred = reg.predict(x_test)

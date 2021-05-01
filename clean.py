@@ -1,7 +1,9 @@
 import json
 
 
-in_file = open("booksummaries.txt",'r',encoding='utf-8')
+in_file = open("booksummaries.txt",'r',encoding='latin')
+genre_map = json.load(open("genre_dict.json"))
+
 corpus = in_file.read()
 summaries = corpus.split("\n")
 
@@ -22,12 +24,17 @@ for summary in summaries_lists:
         continue
     genre_dict = eval(summary[5])
     for key,value in genre_dict.items():
-        summary_dict["genres"].append(value)
+        if value == "Roman à clef":
+            value = "clef"
+        elif value == "Künstlerroman":
+            value = "Kunstlerroman"
+        if genre_map[value] not in summary_dict["genres"]:
+            summary_dict["genres"].append(genre_map[value])
     summary_dict["summary"] = summary[6]
     data.append(summary_dict)
 
 j = json.dumps(data)
-with open("data.json",'w') as f:
+with open("data.json",'w', encoding= 'latin') as f:
     f.write(j)
     f.close()
         

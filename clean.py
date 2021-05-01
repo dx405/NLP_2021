@@ -1,5 +1,25 @@
 import json
+import re
+from nltk.corpus import stopwords
 
+other_stopwords = ["one", "two", "also", "novel", "story", "life","find", "new", "home","book",
+                     "first", "man","woman", "back", "day", "time", "father","take","away","old", 
+                     "return", "see", "tell", "begin", "god", "go", "death", "ship","young",
+                     "make", "family", "end", "come", "human", "world", "escape", "try", "becomes",
+                     "later", "friend", "would", "love", "people", "work",
+                     "attempt", "meet", "however", "help", "way", "year", "men",
+                     "another", "become", "next", "son", "three", "give", "house",
+                     "set", "attack", "town", "name", "kill", "order", "call", "turn",
+                     "must", "even", "child", "plan", "get", "use",
+                     "leave", "n't", "place"]
+
+def clean(text):
+    text = re.sub("\'", "", text)
+    text = text.lower().split()
+    text = [x for x in text if x not in other_stopwords]
+    text = [x for x in text if x not in stopwords.words('english')]
+    text = ' '.join(text)
+    return text
 
 in_file = open("booksummaries.txt",'r',encoding='latin')
 genre_map = json.load(open("genre_dict.json"))

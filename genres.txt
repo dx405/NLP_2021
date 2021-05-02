@@ -79,7 +79,6 @@ Soft science fiction
 Subterranean fiction
 Feminist science fiction
 Science fantasy
-Speculative fiction
 Transgender and transsexual fiction
 Space opera
 Dying Earth subgenre
@@ -258,3 +257,4 @@ Anti-nuclear
 Picture book
 Pastiche
 Fiction
+Speculative fiction

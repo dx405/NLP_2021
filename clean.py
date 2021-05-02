@@ -50,6 +50,9 @@ for summary in summaries_lists:
             value = "Kunstlerroman"
         if genre_map[value] not in summary_dict["genres"]:
             summary_dict["genres"].append(genre_map[value])
+        if "OTHER" in summary_dict["genres"] and len(summary_dict["genres"]) > 1:
+            summary_dict["genres"] = [genre for genre in summary_dict["genres"] if genre != "OTHER"]
+
     summary_dict["summary"] = summary[6]
     data.append(summary_dict)
 

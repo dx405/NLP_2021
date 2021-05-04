@@ -9,7 +9,8 @@ from sklearn.metrics import classification_report, accuracy_score
 from sklearn.preprocessing import LabelEncoder, MultiLabelBinarizer
 from sklearn.multiclass import OneVsRestClassifier
 
-Y, X , labels = tf_idf.main()
+
+Y, X, mlb = tf_idf.main()
 
 # split into training and testing 
 x_train, x_test, y_train, y_test = train_test_split(X, Y, test_size=.20)
@@ -24,3 +25,9 @@ y_pred = reg.predict(x_test)
 print(classification_report(y_test, y_pred))
 print('Accuracy:', accuracy_score(y_test, y_pred))
 
+y_pred_label = mlb.inverse_transform(y_pred)
+y_test_label = mlb.inverse_transform(y_test)
+
+with open('label_results.txt', 'w+') as out:
+	for i in range(len(y_pred_label)):
+		out.write(f'Predicted: {y_pred_label[i]}\tActual: {y_test_label[i]}\n')

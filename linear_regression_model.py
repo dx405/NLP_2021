@@ -9,29 +9,7 @@ from sklearn.metrics import classification_report, accuracy_score
 from sklearn.preprocessing import LabelEncoder, MultiLabelBinarizer
 from sklearn.multiclass import OneVsRestClassifier
 
-def setup_data():
-
-	# Label Encoder
-	mlb = LabelEncoder()
-
-	data = json.load(open('word_frequencies.json'))
-	# set up data
-	genre, words = [], []
-
-	for i in data:
-		# iterate through genres
-		for genres in i[0]:
-			genre.append(genres)
-			words.append(list(i[1].keys()))
-	
-	# convert to numpy arrays
-	words = np.zeros([len(words), len(max(words, key= lambda x: len(x)))])
-	# array of sequence error with words
-	genre = mlb.fit_transform(np.array(genre))
-
-	return words, genre, mlb
-
-Y, X, mlb = setup_data()
+Y, X, mlb = tf_idf()
 
 # split into training and testing 
 x_train, x_test, y_train, y_test = train_test_split(X, Y, test_size=.20)

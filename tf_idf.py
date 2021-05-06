@@ -21,10 +21,6 @@ def main():
 		for i in file:
 			
 			# organize for multiple genres
-			#for j in i['genres']:
-				
-			#	types.append(j)
-			#	summaries.append(i['summary'])
 			types.append(i['genres'])
 			summaries.append(i['summary'])
 
@@ -41,7 +37,7 @@ def main():
 	x_tf = tf_transform.transform(x_counts)
 
 	# return label and data
-	return types_encoded, x_tf, types
+	return types_encoded, x_tf, mlb
 
 
 
